@@ -14,6 +14,21 @@
       "id": "edc9",
       "email": "hello@gmail.com",
       "password": "debdip"
+    },
+    {
+      "id": "2d76",
+      "email": "emily.johnson@x.dummyjson.com",
+      "password": "emilyspass"
+    },
+    {
+      "id": "6145",
+      "email": "abc@gmail.com",
+      "password": "debdip"
+    },
+    {
+      "id": "44af",
+      "email": "abc123@gmail.com",
+      "password": "debdip"
     }
   ],
   "favourites": [
@@ -28,6 +43,27 @@
       "userEmail": "hello@gmail.com",
       "quote": "The less of the World, the freer you live.",
       "author": "Umar ibn Al-Khattāb (R.A)"
+    },
+    {
+      "id": "cab9",
+      "quoteId": 29,
+      "userEmail": "hello@gmail.com",
+      "quote": "No One Would Choose A Friendless Existence On Condition Of Having All The Other Things In The World.",
+      "author": "Aristotle"
+    },
+    {
+      "id": "8cdd",
+      "quoteId": 27,
+      "userEmail": "hello@gmail.com",
+      "quote": "When I am silent, I have thunder hidden inside.",
+      "author": "Rumi"
+    },
+    {
+      "id": "5d58",
+      "quoteId": 22,
+      "userEmail": "debdip987@gmail.com",
+      "quote": "The Way To Get Started Is To Quit Talking And Begin Doing.",
+      "author": "Walt Disney"
     }
   ]
 }

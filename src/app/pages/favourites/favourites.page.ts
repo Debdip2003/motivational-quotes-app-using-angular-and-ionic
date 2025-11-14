@@ -11,6 +11,9 @@ import {
   IonItemSliding,
   IonItem,
   IonLabel,
+  IonItemOptions,
+  IonItemOption,
+  IonIcon,
 } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/services/auth-service/auth-service';
 import { ToastService } from 'src/app/services/toast-service/toast';
@@ -20,6 +23,9 @@ import { ToastService } from 'src/app/services/toast-service/toast';
   templateUrl: './favourites.page.html',
   styleUrls: ['./favourites.page.scss'],
   imports: [
+    IonIcon,
+    IonItemOption,
+    IonItemOptions,
     IonLabel,
     IonItem,
     IonItemSliding,
@@ -35,6 +41,7 @@ import { ToastService } from 'src/app/services/toast-service/toast';
 export class FavouritesPage implements OnInit, AfterViewInit {
   private dataService = inject(DataService);
   private authService = inject(AuthService);
+  private toast = inject(ToastService);
   email: string | null = null;
   favouriteQuote: { id?: number; quote: string; author: string }[] = [];
 
@@ -59,16 +66,14 @@ export class FavouritesPage implements OnInit, AfterViewInit {
   }
 
   //  Delete a favourite quote
-  // onDeleteFavourite(favQuoteID: number | string) {
-  //   this.dataService.deleteFavourite(String(favQuoteID)).subscribe({
-  //     next: () => {
-  //       this.toast.success('Deleted successfully');
-  //       this.loadFavourites();
-  //     },
-  //     error: (error) => {
-  //       console.log('Error occured while deleting', error);
-  //       this.toast.error('PLease try again later');
-  //     },
-  //   });
-  // }
+  onDeleteFavourite(q: { id?: number }) {
+    if (!q.id) return;
+    this.dataService.deleteFavourite(q.id.toString()).subscribe({
+      next: () => {
+        this.toast.success('Deleted successfully');
+        this.loadFavourites();
+      },
+      error: () => this.toast.error('Please try again later'),
+    });
+  }
 }

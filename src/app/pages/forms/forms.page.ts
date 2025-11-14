@@ -46,6 +46,10 @@ export class FormsPage {
   private fb = inject(FormBuilder);
 
   constructor() {
+    this.createAuthForm(); //make a method to create a form and call it inside the constructor to call the form as soon as the view is created
+  }
+
+  createAuthForm() {
     //login form
     this.loginForm = this.fb.group({
       email: [

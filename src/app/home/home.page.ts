@@ -41,14 +41,20 @@ export class HomePage implements OnInit {
 
   //initializing values
   email: string | null = null;
-  favouriteQuote: { id?: number; quote: string; author: string }[] | null = [];
+  favouriteQuote: { quoteId?: number; quote: string; author: string }[] | null =
+    [];
   quotes: { id?: number; quote: string; author: string }[] = [];
   currentPage = 1;
   quotesPerPage = 10;
   loading = false;
 
   ngOnInit() {
-    this.authService.email$.subscribe((email) => (this.email = email));
+    this.authService.email$.subscribe((email) => {
+      if (email) {
+        this.email = email;
+        this.loadFavourites();
+      }
+    });
     this.fetchQuotes();
   }
 
@@ -69,12 +75,11 @@ export class HomePage implements OnInit {
 
   //get shuffled data everytime the page is reload
   shuffledArray(arr: any[]) {
-    const shuffled = [...arr];
-    for (let i = shuffled.length - 1; i > 0; i--) {
+    for (let i = 0; i < arr.length; i++) {
       const j = Math.floor(Math.random() * i);
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    return shuffled;
+    return arr;
   }
 
   //get total number of pages dynamically
@@ -137,15 +142,14 @@ export class HomePage implements OnInit {
           error: () => this.toast.error('Please try again later'),
         });
       } else {
-        this.dataService.deleteFavourite(alreadyExists.id).subscribe({
-          next: () => {
-            this.toast.success('Deleted successfully');
-            this.loadFavourites();
-          },
-          error: () => this.toast.error('Please try again later'),
-        });
+        this.toast.error('Please add quote first to delete');
       }
     });
+  }
+
+  isFavourite(quoteId: number | undefined): boolean {
+    if (!this.favouriteQuote) return false;
+    return this.favouriteQuote.some((f) => f.quoteId === quoteId);
   }
 
   //on clicking the log out button

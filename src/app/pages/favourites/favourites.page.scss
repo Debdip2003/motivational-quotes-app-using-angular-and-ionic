@@ -1,21 +1,13 @@
-.favouriteQuoteCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease-in-out;
-}
-.quote {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 6px;
-  white-space: normal;
-  line-height: 1.5;
-}
 .author {
-  font-size: 0.95rem;
+  color: #666;
   font-style: italic;
-  text-align: right;
-  width: 100%;
+  font-size: 0.95rem;
+}
+.notFoundText {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
 }

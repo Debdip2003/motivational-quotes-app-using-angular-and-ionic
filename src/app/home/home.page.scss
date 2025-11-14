@@ -1,39 +1,17 @@
-ion-app {
-  --background: #f4f5f8;
-}
-
-ion-card {
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  line-height: 1.4;
-  margin-bottom: 8px;
-}
-
 .author {
   color: #666;
   font-style: italic;
   font-size: 0.95rem;
 }
 
-ion-card-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-ion-toolbar ion-title {
-  font-weight: 600;
-}
-ion-button {
-  margin-top: 10px;
-}
-
 .pagination {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+.snipper-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 }

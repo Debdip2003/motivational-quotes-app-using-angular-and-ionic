@@ -23,16 +23,18 @@
   @if(!loading){ @for (q of paginatedQuote; track q.id) {
   <ion-item-sliding>
     <ion-item>
-      <ion-label class="quote-label">
-        <p class="quote-text">“{{ q.quote }}”</p>
+      <ion-label>
+        <p>“{{ q.quote }}”</p>
         <p class="quote-author">— {{ q.author }}</p>
       </ion-label>
     </ion-item>
 
     <ion-item-options side="end">
       <ion-item-option color="success" (click)="addToFavourite(q)">
-        <!-- <ion-icon name="heart-dislike-outline" slot="icon-only"></ion-icon> -->
-        <ion-icon name="heart-outline" slot="icon-only"></ion-icon>
+        <ion-icon
+          [name]="isFavourite(q.id)? 'heart-dislike-outline':'heart-outline'"
+          slot="icon-only"
+        ></ion-icon>
       </ion-item-option>
     </ion-item-options>
   </ion-item-sliding>
@@ -56,5 +58,9 @@
       Next
     </ion-button>
   </ion-buttons>
-  }@else { <ion-spinner name="crescent"></ion-spinner>}
+  }@else {
+  <div class="snipper-container">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  }
 </ion-content>
