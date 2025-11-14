@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  JSON_SERVER_API_BASE_URL: 'http://localhost:3000',
+  PUBLIC_API_BASE_URL: 'https://dummyjson.com',
 };
 
 /*

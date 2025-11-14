@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "test@example.com",
+      "password": "123456"
+    },
+    {
+      "id": "dd06",
+      "email": "debdip987@gmail.com",
+      "password": "debdip"
+    },
+    {
+      "id": "edc9",
+      "email": "hello@gmail.com",
+      "password": "debdip"
+    }
+  ],
+  "favourites": [
+    {
+      "id": 8,
+      "userEmail": "hello@gmail.com",
+      "quote": "O man you are busy working for the world, and the world is busy trying to turn you out.",
+      "author": "Abu Bakr (R.A)"
+    },
+    {
+      "id": 20,
+      "userEmail": "hello@gmail.com",
+      "quote": "The less of the World, the freer you live.",
+      "author": "Umar ibn Al-Khattāb (R.A)"
+    }
+  ]
+}
