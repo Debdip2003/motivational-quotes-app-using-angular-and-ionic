@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { DataService } from 'src/app/services/data-service/data';
 import {
@@ -23,12 +29,7 @@ import { ToastService } from 'src/app/services/toast-service/toast';
   templateUrl: './favourites.page.html',
   styleUrls: ['./favourites.page.scss'],
   imports: [
-    IonIcon,
-    IonItemOption,
-    IonItemOptions,
     IonLabel,
-    IonItem,
-    IonItemSliding,
     IonButton,
     IonButtons,
     IonTitle,
@@ -37,6 +38,7 @@ import { ToastService } from 'src/app/services/toast-service/toast';
     IonContent,
     RouterLink,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FavouritesPage implements OnInit, AfterViewInit {
   private dataService = inject(DataService);

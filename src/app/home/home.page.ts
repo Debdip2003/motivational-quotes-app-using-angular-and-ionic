@@ -44,6 +44,7 @@ export class HomePage implements OnInit {
   favouriteQuote: { quoteId?: number; quote: string; author: string }[] | null =
     [];
   quotes: { id?: number; quote: string; author: string }[] = [];
+  dailyQuote: { id?: number; quote: string; author: string } | null = null;
   currentPage = 1;
   quotesPerPage = 10;
   loading = false;
@@ -65,12 +66,42 @@ export class HomePage implements OnInit {
       next: (data) => {
         this.quotes = this.shuffledArray(data.quotes);
         this.loading = false;
+        this.getDailyQuote();
       },
       error: (err) => {
         console.error('Error loading quotes:', err);
         this.loading = false;
       },
     });
+  }
+
+  getDailyQuote() {
+    const today = new Date().toISOString().split('T')[0];
+    // console.log(today);
+
+    //if today's date mathces with the localstorage
+    const saved = localStorage.getItem('dailyQuote');
+    if (saved) {
+      const dailyData = JSON.parse(saved);
+      if (dailyData.date === today) {
+        this.dailyQuote = dailyData.quote;
+        return;
+      }
+    } else {
+      //if today's date donot match with the local storage
+      const randomQuote =
+        this.quotes[Math.floor(Math.random() * this.quotes.length)];
+
+      this.dailyQuote = randomQuote;
+
+      localStorage.setItem(
+        'dailyQuote',
+        JSON.stringify({
+          date: today,
+          quote: randomQuote,
+        })
+      );
+    }
   }
 
   //get shuffled data everytime the page is reload

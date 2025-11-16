@@ -33,13 +33,13 @@
   ],
   "favourites": [
     {
-      "id": 8,
+      "id": "8",
       "userEmail": "hello@gmail.com",
       "quote": "O man you are busy working for the world, and the world is busy trying to turn you out.",
       "author": "Abu Bakr (R.A)"
     },
     {
-      "id": 20,
+      "id": "20",
       "userEmail": "hello@gmail.com",
       "quote": "The less of the World, the freer you live.",
       "author": "Umar ibn Al-Khattāb (R.A)"
@@ -59,11 +59,32 @@
       "author": "Rumi"
     },
     {
-      "id": "5d58",
-      "quoteId": 22,
+      "id": "2af9",
+      "quoteId": 18,
       "userEmail": "debdip987@gmail.com",
-      "quote": "The Way To Get Started Is To Quit Talking And Begin Doing.",
-      "author": "Walt Disney"
+      "quote": "People Must Learn To Hate And If They Can Learn To Hate, They Can Be Taught To Love.",
+      "author": "Nelson Mandela"
+    },
+    {
+      "id": "6b44",
+      "quoteId": 11,
+      "userEmail": "debdip987@gmail.com",
+      "quote": "I Don'T Believe In Failure. It Is Not Failure If You Enjoyed The Process.",
+      "author": "Oprah Winfrey"
+    },
+    {
+      "id": "0578",
+      "quoteId": 10,
+      "userEmail": "debdip987@gmail.com",
+      "quote": "These Capitalists Generally Act Harmoniously And In Concert, To Fleece The People.",
+      "author": "Abraham Lincoln"
+    },
+    {
+      "id": "ea7b",
+      "quoteId": 29,
+      "userEmail": "debdip987@gmail.com",
+      "quote": "No One Would Choose A Friendless Existence On Condition Of Having All The Other Things In The World.",
+      "author": "Aristotle"
     }
   ]
 }

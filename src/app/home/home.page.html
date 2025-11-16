@@ -20,26 +20,33 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  @if(!loading){ @for (q of paginatedQuote; track q.id) {
-  <ion-item-sliding>
-    <ion-item>
-      <ion-label>
-        <p>“{{ q.quote }}”</p>
-        <p class="quote-author">— {{ q.author }}</p>
-      </ion-label>
-    </ion-item>
+  @if(!loading){
+  <div class="daily-quote-card">
+    @if(dailyQuote){
+    <h2 class="section-title">Daily Motivation</h2>
 
-    <ion-item-options side="end">
-      <ion-item-option color="success" (click)="addToFavourite(q)">
+    <p class="daily-quote">“{{ dailyQuote.quote }}”</p>
+    <p class="daily-author">— {{ dailyQuote.author }}</p>
+    }
+  </div>
+
+  <swiper-container effect="cards" grab-cursor="true">
+    @for (q of paginatedQuote; track q.id) {
+    <swiper-slide class="fav-slide">
+      <div class="delete-btn" (click)="addToFavourite(q)">
         <ion-icon
-          [name]="isFavourite(q.id)? 'heart-dislike-outline':'heart-outline'"
+          [name]="isFavourite(q.id)? 'heart':'heart-outline'"
+          class="favourite-btn"
           slot="icon-only"
         ></ion-icon>
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
+      </div>
 
-  }
+      <p class="quote-text">“{{ q.quote }}”</p>
+      <p class="quote-author">— {{ q.author }}</p>
+    </swiper-slide>
+
+    }
+  </swiper-container>
 
   <!-- pagination buttons -->
   <ion-buttons class="pagination">
@@ -59,7 +66,7 @@
     </ion-button>
   </ion-buttons>
   }@else {
-  <div class="snipper-container">
+  <div class="spinner-container">
     <ion-spinner name="crescent"></ion-spinner>
   </div>
   }
