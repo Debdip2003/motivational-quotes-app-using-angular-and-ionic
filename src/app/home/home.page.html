@@ -1,71 +1,86 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Quotes</ion-title>
-    <ion-buttons slot="end">
+<ion-header class="header-wrapper">
+  <ion-toolbar class="header-toolbar">
+    <!-- LEFT SIDE CONTENT -->
+    <div class="header-left">
+      <h1 class="main-title">Quotes</h1>
+    </div>
+
+    <!-- RIGHT SIDE BUTTONS USING IONIC SLOT -->
+    <ion-buttons slot="end" class="header-buttons">
       <ion-button [routerLink]="['/favourites']">
-        <ion-label>Favourites</ion-label>
+        <ion-icon name="heart-outline"></ion-icon>
       </ion-button>
 
       @if (email) {
       <ion-button (click)="onLogOut()">
-        <span>Logout</span>
+        <ion-icon name="log-out-outline"></ion-icon>
       </ion-button>
       } @else {
-      <ion-button [routerLink]="['/forms']">
-        <span>Login/Signup</span>
+      <ion-button [routerLink]="['/login']">
+        <ion-icon name="person-circle-outline"></ion-icon>
       </ion-button>
       }
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  @if(!loading){
-  <div class="daily-quote-card">
-    @if(dailyQuote){
-    <h2 class="section-title">Daily Motivation</h2>
+<ion-content class="content">
+  @if (!loading) {
 
-    <p class="daily-quote">“{{ dailyQuote.quote }}”</p>
-    <p class="daily-author">— {{ dailyQuote.author }}</p>
-    }
+  <!-- DAILY QUOTES SECTION -->
+  @if (dailyQuote) {
+  <div class="daily-wrapper">
+    <div class="daily-card">
+      <p class="daily-text">“{{ dailyQuote.quote }}”</p>
+      <p class="daily-author">— {{ dailyQuote.author }}</p>
+    </div>
+  </div>
+  }
+
+  <!-- QUOTE SWIPER SECTION -->
+  <div class="swiper-wrapper-box">
+    <swiper-container effect="cards" grab-cursor="true">
+      @for (q of paginatedQuote; track q.id) {
+      <swiper-slide class="quote-card">
+        <div class="card-actions">
+          <ion-icon
+            name="share-social-outline"
+            class="action-icon"
+            (click)="shareQuote(q.id)"
+          ></ion-icon>
+
+          <ion-icon
+            [name]="isFavourite(q.id) ? 'heart' : 'heart-outline'"
+            class="action-icon fav-icon"
+            (click)="addToFavourite(q)"
+          >
+          </ion-icon>
+        </div>
+
+        <p class="quote-text">“{{ q.quote }}”</p>
+        <p class="quote-author">— {{ q.author }}</p>
+      </swiper-slide>
+      }
+    </swiper-container>
   </div>
 
-  <swiper-container effect="cards" grab-cursor="true">
-    @for (q of paginatedQuote; track q.id) {
-    <swiper-slide class="fav-slide">
-      <div class="delete-btn" (click)="addToFavourite(q)">
-        <ion-icon
-          [name]="isFavourite(q.id)? 'heart':'heart-outline'"
-          class="favourite-btn"
-          slot="icon-only"
-        ></ion-icon>
-      </div>
-
-      <p class="quote-text">“{{ q.quote }}”</p>
-      <p class="quote-author">— {{ q.author }}</p>
-    </swiper-slide>
-
-    }
-  </swiper-container>
-
-  <!-- pagination buttons -->
-  <ion-buttons class="pagination">
+  <!-- PAGINATION -->
+  <div class="pagination-row">
     <ion-button
       fill="outline"
       (click)="changePage(currentPage - 1)"
       [disabled]="currentPage === 1"
+      >Previous</ion-button
     >
-      Previous
-    </ion-button>
     <ion-button
       fill="outline"
       (click)="changePage(currentPage + 1)"
       [disabled]="currentPage === totalNumberOfPages"
+      >Next</ion-button
     >
-      Next
-    </ion-button>
-  </ion-buttons>
-  }@else {
+  </div>
+
+  } @else {
   <div class="spinner-container">
     <ion-spinner name="crescent"></ion-spinner>
   </div>

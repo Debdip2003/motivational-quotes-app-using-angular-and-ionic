@@ -1,29 +1,46 @@
-<ion-content>
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>My Favorites</ion-title>
-      <ion-buttons slot="end">
-        <ion-button [routerLink]="['']" routerLinkActive="router-link-active"
-          >Home</ion-button
-        >
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-toolbar color="primary" class="header-toolbar">
+    <ion-title class="main-title">My Favorites</ion-title>
 
-  @if (favouriteQuote.length>0) {
-  <swiper-container effect="cards" grab-cursor="true">
-    @for (q of favouriteQuote; track q.id) {
-    <swiper-slide class="fav-slide">
-      <div class="delete-btn" (click)="onDeleteFavourite(q)">
-        <ion-icon name="trash-outline"></ion-icon>
-      </div>
+    <ion-buttons slot="end" class="header-buttons">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-      <p class="quote-text">“{{ q.quote }}”</p>
-      <p class="quote-author">— {{ q.author }}</p>
-    </swiper-slide>
-    }
-  </swiper-container>
-  } @else{
-  <ion-label class="notFoundText">No favourite quote found</ion-label>
+<!-- CONTENT -->
+<ion-content class="content">
+  @if(favouriteQuote.length > 0) {
+  <div class="swiper-wrapper-box">
+    <swiper-container effect="cards" grab-cursor="true">
+      @for(q of favouriteQuote; track q.id) {
+      <swiper-slide class="quote-card fav-card">
+        <!-- TOP DELETE BUTTON -->
+        <div class="card-actions">
+          <ion-icon
+            name="trash-outline"
+            class="action-icon delete-icon"
+            (click)="onDeleteFavourite(q)"
+          >
+          </ion-icon>
+        </div>
+
+        <!-- QUOTE TEXT -->
+        <p class="quote-text">“{{ q.quote }}”</p>
+        <p class="quote-author">— {{ q.author }}</p>
+      </swiper-slide>
+      }
+    </swiper-container>
+  </div>
+
+  } @else {
+
+  <div class="empty-state">
+    <ion-icon name="heart-dislike-outline"></ion-icon>
+    <p>No favourite quote found</p>
+  </div>
+
   }
 </ion-content>

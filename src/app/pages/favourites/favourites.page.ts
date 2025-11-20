@@ -29,7 +29,6 @@ import { ToastService } from 'src/app/services/toast-service/toast';
   templateUrl: './favourites.page.html',
   styleUrls: ['./favourites.page.scss'],
   imports: [
-    IonLabel,
     IonButton,
     IonButtons,
     IonTitle,

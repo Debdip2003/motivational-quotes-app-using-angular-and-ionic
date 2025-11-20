@@ -1,0 +1,94 @@
+/* PAGE BACKGROUND */
+.auth-container {
+  --background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* AUTH BOX */
+.auth-box {
+  width: 100%;
+  max-width: 380px;
+  margin: auto;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 28px 24px;
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+/* TITLE */
+.form-container h1 {
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+/* SUBTITLE */
+.subtitle {
+  text-align: center;
+  color: #d5d5d5;
+  font-size: 0.95rem;
+  margin-bottom: 22px;
+}
+
+/* INPUT FIELDS */
+.input-item {
+  --background: rgba(255, 255, 255, 0.06);
+  --border-radius: 14px;
+  --padding-start: 14px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+}
+
+.input-item ion-label {
+  color: #cccccc !important;
+}
+
+ion-input {
+  color: #fff !important;
+}
+
+/* ERROR TEXT */
+ion-text small {
+  margin-left: 8px;
+  color: #ff6666 !important;
+}
+
+/* PRIMARY BUTTON */
+.primary-btn {
+  margin-top: 12px;
+  height: 46px;
+  --border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+
+  --background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  --background-hover: linear-gradient(135deg, #ff5538, #ff4c75);
+}
+
+/* TOGGLE LINK */
+.toggle-link {
+  text-align: center;
+  margin-top: 18px;
+  color: #cfcfcf;
+  font-size: 0.95rem;
+}
+
+.toggle-link a {
+  color: #ff4e6a;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.toggle-link a:hover {
+  text-decoration: underline;
+}

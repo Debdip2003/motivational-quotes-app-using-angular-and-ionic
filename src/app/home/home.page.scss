@@ -1,92 +1,139 @@
-.pagination {
+.header-wrapper {
+  --background: var(--ion-color-primary);
+  color: white;
+}
+
+.header-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+}
+
+/* LEFT SIDE */
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.main-title {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* Quote Card */
+
+.daily-wrapper {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-}
-/* Match quote styling from main page */
-.quote-text {
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0 14px;
-  text-align: center;
-  line-height: 1.4;
+  justify-content: center;
+  margin-top: 8px;
 }
 
-.quote-author {
-  font-style: italic;
-  font-size: 0.95rem;
-  margin-top: 10px;
-  text-align: center;
+.daily-card {
+  background: rgba(255, 255, 255, 0.18);
+  padding: 6px 12px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  width: fit-content;
 }
 
-/* Swiper Card */
-.fav-slide {
+/* Button icons */
+.header-buttons ion-icon {
+  font-size: 26px;
+  color: white;
+}
+
+/* CONTENT + SWIPER LAYOUT */
+
+.content {
+  --background: #111;
+}
+
+/* Center Swiper */
+.swiper-wrapper-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+swiper-container {
+  width: 280px;
+  height: 400px;
+  display: block;
+}
+
+/* Quote Card */
+.quote-card {
   position: relative;
-  background: #232323;
+  background: linear-gradient(135deg, #252525, #1b1b1b);
   border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  height: 100%;
 }
 
-/* Delete Button (Top Right) */
-.favourite-btn {
+/* Top Action Icons */
+.card-actions {
   position: absolute;
-  top: 12px;
+  top: 10px;
   right: 12px;
-  padding: 8px;
-  cursor: pointer;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 14px;
 }
 
-.favourite-btn ion-icon {
-  font-size: 20px;
+.action-icon {
+  font-size: 24px;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-/* Center Swiper Container */
-swiper-container {
-  width: 260px;
-  height: 380px;
-  margin: 30px auto;
-  display: block;
+.action-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
+
+.fav-icon {
+  color: #ff355e;
+}
+
+/* Quote Text */
+.quote-text {
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 0 10px;
+  color: #fff;
+  text-align: center;
+}
+
+.quote-author {
+  font-size: 1rem;
+  font-style: italic;
+  margin-top: 14px;
+  opacity: 0.8;
+}
+
+/* PAGINATION */
+
+.pagination-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 12px;
+}
+
+/* LOADING SPINNER */
 
 .spinner-container {
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
-}
-
-//daily quote box
-.section-title {
-  font-size: small;
-  margin-bottom: 10px;
-  color: white;
-}
-
-.daily-quote {
-  font-size: 1.2rem;
-  font-style: italic;
-  color: white;
-  margin-bottom: 8px;
-}
-
-.daily-author {
-  font-size: 1rem;
-  font-weight: 500;
-  color: white;
-  text-align: right;
-}
-.daily-quote-card {
-  text-align: center;
-  margin-bottom: 20px;
 }

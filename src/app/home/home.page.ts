@@ -16,20 +16,13 @@ import { Router, RouterLink } from '@angular/router';
 import { DataService } from '../services/data-service/data';
 import { AuthService } from '../services/auth-service/auth-service';
 import { ToastService } from '../services/toast-service/toast';
+import { Share } from '@capacitor/share';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonButtons,
-    IonButton,
-    IonContent,
-    RouterLink,
-  ],
+  imports: [IonHeader, IonToolbar, IonButtons, IonButton, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePage implements OnInit {
@@ -86,21 +79,21 @@ export class HomePage implements OnInit {
       if (dailyData.date === today) {
         this.dailyQuote = dailyData.quote;
         return;
+      } else {
+        //if today's date donot match with the local storage
+        const randomQuote =
+          this.quotes[Math.floor(Math.random() * this.quotes.length)];
+
+        this.dailyQuote = randomQuote;
+
+        localStorage.setItem(
+          'dailyQuote',
+          JSON.stringify({
+            date: today,
+            quote: randomQuote,
+          })
+        );
       }
-    } else {
-      //if today's date donot match with the local storage
-      const randomQuote =
-        this.quotes[Math.floor(Math.random() * this.quotes.length)];
-
-      this.dailyQuote = randomQuote;
-
-      localStorage.setItem(
-        'dailyQuote',
-        JSON.stringify({
-          date: today,
-          quote: randomQuote,
-        })
-      );
     }
   }
 
@@ -148,7 +141,7 @@ export class HomePage implements OnInit {
   }
 
   //  Add to favourites using JSON Server
-  addToFavourite(quotes: any) {
+  addToFavourite(quotes: { id?: number; quote: string; author: string }) {
     if (!this.email) {
       this.router.navigate(['/forms']);
       return;
@@ -173,7 +166,7 @@ export class HomePage implements OnInit {
           error: () => this.toast.error('Please try again later'),
         });
       } else {
-        this.toast.error('Please add quote first to delete');
+        this.toast.warning('This quote already exists in your favourites');
       }
     });
   }
@@ -188,5 +181,15 @@ export class HomePage implements OnInit {
     this.authService.logout();
     this.favouriteQuote = [];
     this.toast.success('Logout succesfully');
+  }
+
+  //share functionality
+  async shareQuote(index?: number) {
+    if (index) {
+      await Share.share({
+        title: 'Here is the motivational quote for you',
+        text: this.quotes[index].quote,
+      });
+    }
   }
 }
