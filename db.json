@@ -1,76 +1,10 @@
 {
   "users": [
     {
-      "id": "1",
-      "email": "test@example.com",
-      "password": "123456"
-    },
-    {
-      "id": "dd06",
-      "email": "debdip987@gmail.com",
-      "password": "debdip"
-    },
-    {
-      "id": "edc9",
-      "email": "hello@gmail.com",
-      "password": "debdip"
-    },
-    {
-      "id": "2d76",
-      "email": "emily.johnson@x.dummyjson.com",
-      "password": "emilyspass"
-    },
-    {
-      "id": "6145",
-      "email": "abc@gmail.com",
-      "password": "debdip"
-    },
-    {
-      "id": "44af",
-      "email": "abc123@gmail.com",
+      "id": "9c75",
+      "email": "debdip@gmail.com",
       "password": "debdip"
     }
   ],
-  "favourites": [
-    {
-      "id": "8",
-      "userEmail": "hello@gmail.com",
-      "quote": "O man you are busy working for the world, and the world is busy trying to turn you out.",
-      "author": "Abu Bakr (R.A)"
-    },
-    {
-      "id": "20",
-      "userEmail": "hello@gmail.com",
-      "quote": "The less of the World, the freer you live.",
-      "author": "Umar ibn Al-Khattāb (R.A)"
-    },
-    {
-      "id": "cab9",
-      "quoteId": 29,
-      "userEmail": "hello@gmail.com",
-      "quote": "No One Would Choose A Friendless Existence On Condition Of Having All The Other Things In The World.",
-      "author": "Aristotle"
-    },
-    {
-      "id": "8cdd",
-      "quoteId": 27,
-      "userEmail": "hello@gmail.com",
-      "quote": "When I am silent, I have thunder hidden inside.",
-      "author": "Rumi"
-    },
-    {
-      "id": "0e65",
-      "quoteId": 19,
-      "userEmail": "debdip987@gmail.com",
-      "quote": "Everyone has been made for some particular work, and the desire for that work has been put in every heart.",
-      "author": "Rumi"
-    },
-    {
-      "id": "0117",
-      "quoteId": 7,
-      "userEmail": "debdip987@gmail.com",
-      "quote": "If You Are Out To Describe The Truth, Leave Elegance To The Tailor.",
-      "author": "Albert Einstein"
-    }
-  ]
+  "favourites": []
 }

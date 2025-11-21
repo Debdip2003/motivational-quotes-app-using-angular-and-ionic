@@ -5,7 +5,7 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { DataService } from 'src/app/services/data-service/data';
 import {
   IonContent,
@@ -14,12 +14,6 @@ import {
   IonTitle,
   IonButtons,
   IonButton,
-  IonItemSliding,
-  IonItem,
-  IonLabel,
-  IonItemOptions,
-  IonItemOption,
-  IonIcon,
 } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/services/auth-service/auth-service';
 import { ToastService } from 'src/app/services/toast-service/toast';
@@ -44,10 +38,16 @@ export class FavouritesPage implements OnInit, AfterViewInit {
   private authService = inject(AuthService);
   private toast = inject(ToastService);
   email: string | null = null;
-  favouriteQuote: { id?: number; quote: string; author: string }[] = [];
+  favouriteQuote: {
+    id?: number;
+    quote: string;
+    author: string;
+    isFav: boolean;
+  }[] = [];
 
   ngOnInit(): void {
     this.authService.email$.subscribe((email) => (this.email = email));
+    this.authService.favourite$.subscribe((fav) => (this.favouriteQuote = fav));
   }
 
   ngAfterViewInit(): void {
@@ -59,22 +59,25 @@ export class FavouritesPage implements OnInit, AfterViewInit {
 
   //  Load all favourites for the logged-in user
   loadFavourites() {
-    if (!this.email) return;
-
-    this.dataService.getFavourites(this.email).subscribe((favs) => {
-      this.favouriteQuote = favs;
-    });
+    // if (!this.email) return;
+    if (this.email) {
+      this.dataService.getFavourites(this.email).subscribe((favs) => {
+        this.authService.favouriteQuoteSubject.next(favs);
+      });
+    }
   }
 
   //  Delete a favourite quote
   onDeleteFavourite(q: { id?: number }) {
-    if (!q.id) return;
-    this.dataService.deleteFavourite(q.id.toString()).subscribe({
-      next: () => {
-        this.toast.success('Deleted successfully');
-        this.loadFavourites();
-      },
-      error: () => this.toast.error('Please try again later'),
-    });
+    // if (!q.id) return;
+    if (q.id) {
+      this.dataService.deleteFavourite(q.id.toString()).subscribe({
+        next: () => {
+          this.toast.success('Deleted successfully');
+          this.loadFavourites();
+        },
+        error: () => this.toast.error('Please try again later'),
+      });
+    }
   }
 }

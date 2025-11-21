@@ -40,7 +40,7 @@
   <!-- QUOTE SWIPER SECTION -->
   <div class="swiper-wrapper-box">
     <swiper-container effect="cards" grab-cursor="true">
-      @for (q of paginatedQuote; track q.id) {
+      @for (q of quotes; track q.id) {
       <swiper-slide class="quote-card">
         <div class="card-actions">
           <ion-icon
@@ -65,7 +65,7 @@
   </div>
 
   <!-- PAGINATION -->
-  <div class="pagination-row">
+  <!-- <div class="pagination-row">
     <ion-button
       fill="outline"
       (click)="changePage(currentPage - 1)"
@@ -75,10 +75,10 @@
     <ion-button
       fill="outline"
       (click)="changePage(currentPage + 1)"
-      [disabled]="currentPage === totalNumberOfPages"
+      [disabled]="currentPage === totalNumberOfPages()"
       >Next</ion-button
     >
-  </div>
+  </div> -->
 
   } @else {
   <div class="spinner-container">
