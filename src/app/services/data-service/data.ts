@@ -46,7 +46,7 @@ export class DataService {
   //   return this.http.delete<void>(`${this.apiUrl}/favourites/${favQuote}`);
   // }
 
-  deleteFavourite(quoteId: string | null): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/favourites/${quoteId}`);
+  deleteFavourite(id: string | null): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/favourites/${id}`);
   }
 }

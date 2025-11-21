@@ -14,6 +14,7 @@ import {
   IonTitle,
   IonButtons,
   IonButton,
+  AlertController,
 } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/services/auth-service/auth-service';
 import { ToastService } from 'src/app/services/toast-service/toast';
@@ -34,9 +35,12 @@ import { ToastService } from 'src/app/services/toast-service/toast';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FavouritesPage implements OnInit, AfterViewInit {
+  //injecting the dependency
   private dataService = inject(DataService);
   private authService = inject(AuthService);
   private toast = inject(ToastService);
+
+  //declaring the initial values
   email: string | null = null;
   favouriteQuote: {
     id?: number;
@@ -44,10 +48,36 @@ export class FavouritesPage implements OnInit, AfterViewInit {
     author: string;
     isFav: boolean;
   }[] = [];
+  selectedQuote: { id?: number } | null = null; //select the specific quote to delete
+
+  constructor(private alertCtrl: AlertController) {}
 
   ngOnInit(): void {
     this.authService.email$.subscribe((email) => (this.email = email));
     this.authService.favourite$.subscribe((fav) => (this.favouriteQuote = fav));
+  }
+
+  async openDeleteAlert(q: { id?: number }) {
+    const alert = await this.alertCtrl.create({
+      header: 'Delete Quote?',
+      message: 'Are you sure you want to delete this quote?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Delete',
+          role: 'confirm',
+        },
+      ],
+    });
+
+    await alert.present();
+    const { role } = await alert.onDidDismiss();
+    if (role === 'confirm') {
+      this.onDeleteFavourite(q);
+    }
   }
 
   ngAfterViewInit(): void {
