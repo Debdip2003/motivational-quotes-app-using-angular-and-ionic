@@ -1,0 +1,41 @@
+form {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.formField {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Each row containing email+password+trash */
+.form-array-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+/* Wrap each input + error vertically */
+.field-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Trash Button */
+ion-button[fill="clear"] {
+  align-self: center;
+  height: 40px;
+  width: 40px;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.addIcon {
+  margin-top: 10px;
+}

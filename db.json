@@ -6,5 +6,30 @@
       "password": "debdip"
     }
   ],
-  "favourites": []
+  "favourites": [
+    {
+      "id": "a3c7",
+      "quoteId": 1,
+      "userEmail": "debdip@gmail.com",
+      "quote": "Your heart is the size of an ocean. Go find yourself in its hidden depths.",
+      "author": "Rumi",
+      "isFav": true
+    },
+    {
+      "id": "ea4a",
+      "quoteId": 4,
+      "userEmail": "debdip@gmail.com",
+      "quote": "If You Can'T Make It Good, At Least Make It Look Good.",
+      "author": "Bill Gates",
+      "isFav": true
+    },
+    {
+      "id": "87ea",
+      "quoteId": 5,
+      "userEmail": "debdip@gmail.com",
+      "quote": "Heart be brave. If you cannot be brave, just go. Love's glory is not a small thing.",
+      "author": "Rumi",
+      "isFav": true
+    }
+  ]
 }

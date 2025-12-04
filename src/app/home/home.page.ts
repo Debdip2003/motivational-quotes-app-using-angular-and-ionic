@@ -44,28 +44,6 @@ export class HomePage implements OnInit {
   quotesPerPage = 10;
   loading = false;
 
-  // //colour assignement to the quote card
-  // colors = [
-  //   'rgb(206, 17, 17)',
-  //   'rgb(0, 140, 255)',
-  //   'rgb(10, 184, 111)',
-  //   'rgba(168, 106, 25, 1)',
-  //   'rgb(118, 163, 12)',
-  //   'rgb(180, 10, 47)',
-  //   'rgb(35, 99, 19)',
-  //   'rgb(0, 68, 255)',
-  //   'rgba(75, 2, 75, 1)',
-  //   'rgb(54, 94, 77)',
-  // ];
-
-  // getSlideColor(i?: number) {
-  //   // if (!i) return;
-  //   if (i) {
-  //     return this.colors[i % this.colors.length];
-  //   }
-  //   return;
-  // }
-
   //ngOnInit functions
   ngOnInit() {
     this.authService.email$.subscribe((email) => {

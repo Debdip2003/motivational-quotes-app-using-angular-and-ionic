@@ -3,9 +3,9 @@ import { authGuard } from './auth-guard';
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    path:'',
+    redirectTo:'/home',
+    pathMatch: 'full'
   },
   {
     path: 'home',
@@ -14,7 +14,7 @@ export const routes: Routes = [
   },
   {
     path: 'forms',
-    loadComponent: () =>
+    loadComponent: () => 
       import('./pages/forms/forms.page').then((m) => m.FormsPage),
   },
   {
@@ -24,5 +24,9 @@ export const routes: Routes = [
         (m) => m.FavouritesPage
       ),
     canActivate: [authGuard],
+  },
+  {
+    path: 'form-array',
+    loadComponent: () => import('./pages/form-array/form-array.page').then( (m) => m.FormArrayPage),
   },
 ];

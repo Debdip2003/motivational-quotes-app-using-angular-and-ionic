@@ -1,0 +1,75 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="formField" formArrayName="formValue">
+    @for (group of formValue.controls; track group; let index = $index) {
+    <div [formGroupName]="index" class="form-array-row">
+      <!-- Email -->
+      <div class="field-wrapper">
+        @if (group.get('email')?.touched && group.get('email')?.errors) {
+        <ion-text color="danger">
+          @if (group.get('email')?.hasError('required')) {
+          <p>Email is required.</p>
+          } @if (group.get('email')?.hasError('pattern')) {
+          <p>Enter a valid email.</p>
+          }
+        </ion-text>
+        }
+
+        <ion-item>
+          <ion-input
+            label="Email"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Enter email"
+            type="email"
+            formControlName="email"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Password -->
+      <div class="field-wrapper">
+        @if (group.get('password')?.touched && group.get('password')?.errors) {
+        <ion-text color="danger">
+          @if (group.get('password')?.hasError('required')) {
+          <p>Password is required.</p>
+          } @if (group.get('password')?.hasError('pattern')) {
+          <p>Password must be at least 6 characters.</p>
+          }
+        </ion-text>
+        }
+
+        <ion-item>
+          <ion-input
+            label="Password"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Enter password"
+            type="password"
+            formControlName="password"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Remove Button -->
+      <ion-button fill="clear" (click)="removeField(index)">
+        <ion-icon name="trash-outline" color="danger" size="large"></ion-icon>
+      </ion-button>
+    </div>
+    }
+  </div>
+
+  <!-- Add Button -->
+  <ion-button
+    class="addIcon"
+    color="danger"
+    shape="round"
+    (click)="addButton()"
+  >
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-button>
+
+  <!-- Submit Button -->
+  <ion-button expand="block" shape="round" class="primary-btn" type="submit">
+    Submit
+  </ion-button>
+</form>

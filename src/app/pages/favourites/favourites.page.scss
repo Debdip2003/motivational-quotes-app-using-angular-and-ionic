@@ -29,6 +29,7 @@
 .swiper-wrapper-box {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 25px;
 }
 
@@ -38,9 +39,7 @@ swiper-container {
   display: block;
 }
 
-/* ------------------------------------------- */
-/* QUOTE CARD DESIGN (same as home page) */
-/* ------------------------------------------- */
+// quote card
 .quote-card {
   position: relative;
   background: linear-gradient(135deg, #252525, #1b1b1b);
